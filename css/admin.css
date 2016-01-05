@@ -1,0 +1,176 @@
+body{
+	min-width:1024px;
+}
+
+a, li{
+	color:inherit;
+}
+
+textarea{
+	resize:none;
+}
+
+
+@media (min-width:1116px){
+	.grid-column{
+		width:130px;
+	}
+}
+
+@media (max-width:1116px){
+	.grid-column{
+		width:120px;
+	}
+
+}
+
+
+
+
+
+.grid-column:nth-child(even){
+	border-left:1px solid #ADADAD;
+	border-right:1px solid #ADADAD;
+}
+
+.grid-column:last-child{
+	border-right:0px;
+}
+
+
+
+#left-side-bar{
+	width:15%;
+	background-color:#F3F3F3;
+	border-right:1px solid #D4D4D4;
+	height:100vh;
+	border-bottom:1px solid #D4D4D4;
+}
+.act{
+	font-weight:bold;
+}
+
+
+#left-side-bar .navi-item{
+	width:100%;
+	text-align:left;
+	padding:20px 0px;
+	font-size:18px;
+	border-bottom:1px solid #C3C3C3;
+}
+
+/* 
+#left-side-bar .navi-item:hover{
+	background:#f0f0f0;
+}
+ */
+
+#left-side-bar .navi-item .item{
+	margin:0px 20px 0px 40px ;
+	color:#112D62;
+}
+
+#left-side-bar .navi-item .sub-item{
+	color:#112D62;
+	margin-left:56px;
+	list-style:none;
+	font-weight:normal;
+	font-size:16px;
+}
+
+#right-side-bar{
+	width:84%;	
+}
+
+#right-side-bar .header{
+	font-size:26px;
+	color:#112D62;
+	padding:16px 30px;
+}
+
+#product-grid{
+	padding: 0px 30px 0px 30px;
+}
+
+.grid-content{
+	height:60px;
+}
+
+
+.animated-button{
+	padding: 0px 11px;
+	background: none;
+    border-radius: 3px;
+  	line-height: 30px;
+ 	font-weight:700;
+ 	cursor:pointer;
+ 	font-size:13px;
+}
+
+.animated-button:hover{
+	transform:scale(1.01,1.01);
+	-webkit-transform:scale(1.01,1.01);
+	-ms-transform:scale(1.01,1.01);
+}
+
+.animated-button:active{
+	transform:scale(1,1);
+	-webkit-transform:scale(1,1);
+	-ms-transform:scale(1,1);
+}
+
+.blue-action-button{
+	color: #386D9E;
+ 	border:1px solid #1B5E9C
+}
+
+.blue-action-button:hover{
+	color: #25527C;
+ 	border:1px solid #1C5B96;
+}
+
+
+
+.fcy-txt {
+    position: relative;
+    border: 2px solid #c4140e;
+    font-size: 13px;
+    cursor: pointer;
+    width: 94%;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.action-icon{
+	position:relative;
+	top:16px;
+	cursor:pointer;
+}
+
+.action-icon:hover{
+	opacity:0.8;
+}
+
+
+.inventory{
+	cursor:pointer;
+}
+
+
+.edit-dialog-footer .alert-message{
+    float: left;
+    margin-left: 26px;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+
+.grid-column{
+	font-size:14px !important;
+}
+
+
+.form-title{
+	font-size:16px;
+	color:#7D1D1D;
+}

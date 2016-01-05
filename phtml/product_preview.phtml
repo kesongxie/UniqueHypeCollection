@@ -1,0 +1,41 @@
+<div id="product-shot-preview" class="inline-blk">
+				<div class="product-preview">
+					<img src="<?php echo htmlentities($product['cover_path_url']) ?>" id="product-preview-shot" style="width:100%;">
+				</div>
+			</div>
+<div id="product-detail-info" class="inline-blk" data-key="<?php echo $product['product_id']; ?>">
+	<div id="detail-info-inner">
+		<div class="title"><?php echo htmlentities($product['title']) ?></div>
+		<div class="desc"><?php echo $product['description'] ?></div>
+		<div class="attribute-label"><?php echo $atr_name->getAttributeNameFromId($product['products_snap_shots'][0]['attribute_name_id']); ?></div>
+		<div class="product-snap-shot" >
+			<?php if($product['products_snap_shots']  !== false): ?>
+				<?php foreach($product['products_snap_shots'] as $snap_shot): ?>
+					<div class="inline-blk shot attribute-name-selector <?php echo ($snap_shot['cover'] == '1')?'attribute-selected':''?>" title="<?php echo htmlentities( $atr_name->getAttributeNameFromId($snap_shot['attribute_name_id'])) ?>" data-atr-name-key="<?php echo  $snap_shot['attribute_name_id'] ?>">
+						<img src="<?php echo htmlentities(MEDDIR.$snap_shot['shot_path']) ?>" height="48" width="48"  class="product-thumbnail">
+					</div>
+				<?php endforeach; ?>
+			<?php endif; ?>
+		</div>
+		<div class="product-price price a-red" ><?php echo getCurrencyFormat($product['price']) ?></div>
+	
+		<div class="proudct-select-size">
+			<div class="header">SELECT SIZE</div>
+			<div class="body">
+				<select>
+					<option>CHOOSE</option>
+					<?php foreach($product['products_size_available'] as $size): ?>
+						<option><?php echo $product_size->getSizeFromId($size['product_size_id']); ?></option>
+					<?php endforeach; ?>
+				</select>
+				<div class="inline-blk stock-status"></div>
+			</div>
+		</div>
+	
+		<div class="proudct-action">
+			<button class="fashion-black-button" id="add-to-cart">Add to bag</button>
+
+		</div>
+	</div>
+	
+</div>

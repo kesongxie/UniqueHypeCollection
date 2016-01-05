@@ -1,0 +1,37 @@
+<div id="banner">
+			<div id="title">
+			<a href="<?php echo ROOTDIR ?>index.php" ><div class="inline-blk" id="logo">UNIQUEHYPECOLLECTION</div></a>
+			
+			<div id="shopping-cart-wrapper" class="info" style="font-size:14px;margin-top:20px;" >
+						<div id="shopping-cart-label" class="info"><a href="<?php echo SHOPPING_BAG_VIEW_PATH ?>" class="plain-lk a-red">BAG (<span id="cart-item-num"><?php echo $cart_item_num;  ?></span>)</a></div>
+						<div id="shopping-cart" class="" style="position:absolute;top:30px;right:0px;background-color:#FEFEFE;width:400px;box-shadow:-1px 5px 14px #C8C8C8;border-radius:2px;">
+							<div style="position:relative">
+								<div class="arrow-up" style="position:absolute;top:-8px;right:16px;border-bottom:10px solid #FEFEFE"></div>
+								<div class="header hdn" style="border-bottom:1px solid #f0f0f0">
+									<div style="margin:20px;color:#112D62">SHOPPING BAG</div>
+								</div>
+								<div class="body" style="padding:20px;max-height: 400px;overflow: scroll;">
+									<?php echo  $atr->loadPopupCart(); ?>
+								</div>
+								<div class="footer">
+									<div style="margin:20px;">
+										<a href="<?php echo SHOPPING_BAG_VIEW_PATH ?>"><button class="fashion-black-button" style="width:100%;">VIEW BAG</button></a>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+			</div>
+			
+			<div class="additional-info">
+				<div class="info">15 Elizabeth Street #25 (basement) NY, NY 10013
+				</div>
+				<div class="info">Store hours: 1:00 pm - 8:00 pm</div>
+				<div id="ins-wrapper" class="hdn" >
+					<img src="<?php echo MEDDIR ?>ins.png" id="ins-icon"  height="30" width="30">
+					<a href="https://www.instagram.com/uniquehypecollection/" target="_blank">
+						<div class="inline-blk" id="ins-label" style="color:#112D62">@uniquehypecollection</div>
+					</a>
+				</div>
+			</div>
+	</div>

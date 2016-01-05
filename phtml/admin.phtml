@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+
+	<title>UniqueHypeCollection</title>
+	<link rel="shortcut icon" type="image/x-icon" href="<?php echo ROOTDIR?>media/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="<?php echo ROOTDIR?>css/core.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo ROOTDIR?>css/admin.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo ROOTDIR?>css/shop.css">
+
+	<script type="text/javascript" src="<?php echo ROOTDIR?>js/jquery.js"></script>
+	<script type="text/javascript" src="<?php echo ROOTDIR?>js/jquery-ui.js"></script>
+	<script type="text/javascript" src="<?php echo ROOTDIR?>js/core.js"></script>
+	<script type="text/javascript" src="<?php echo ROOTDIR?>js/admin.js"></script>
+
+	
+	<!--[if lt IE 9]>
+	<script src="dist/html5shiv.js"></script>
+	<![endif]-->
+	</head>
+	<body style="">
+		<div class="banner" style="padding:30px;border-bottom:1px solid #D4D4D4;background-color:#fff;">
+			<div class="left-flow"><img src="<?php echo MEDDIR ?>logo.jpg" style="border-radius:50%;margin-right:20px;" height="80" width="80"></div>
+
+			<div id="title"><a href="<?php echo ROOTDIR ?>index.php" id="logo">UNIQUEHYPECOLLECTION</a></div>
+			<div>
+				<div class="info">Store Management</div>
+			</div>
+		</div>
+		<div style="font-size:0px;width:100%;clear:both" >
+		
+			<ul id="left-side-bar" class="inline-blk">
+				<li class="navi-item">
+					<a href="" class="item plain-lk">Overview</a>
+				</li>
+				
+				<li class="navi-item act">
+					<a href="<?php echo  ADMIN_PRODUCT_SELLING?>" class="item plain-lk">Product</a>
+					<ul>
+						<li class="sub-item"><a href="<?php echo ADMIN_PRODUCT_SELLING ?>" class="plain-lk<?php echo (isset($_GET['st']) && strtolower($_GET['st']) == 'selling')?' act':'' ?>">Selling</a></li>
+						<li class="sub-item"><a href="" class="plain-lk" id="add-new-product">Add New</a></li>
+					</ul>
+				</li>
+				
+				<li class="navi-item">
+					<a href="" class="item plain-lk">Order</a>
+				</li>
+				
+				<li class="navi-item">
+					<a href="" class="item plain-lk">Store</a>
+				</li>
+				
+				<li class="navi-item">
+					<a href="" class="item plain-lk">Logout</a>
+				</li>
+			</ul>
+			<div id="right-side-bar" class="inline-blk" >
+				<?php if($_GET['t'] == 'p'): ?>
+					<?php if(isset($_GET['st'])): ?>
+						<?php  if($_GET['st'] == 'addnew'): ?>
+								
+
+							<?php 
+								$product_preview = $product->addNewProduct("rigid-slim-jean"); 
+								echo $product_preview;
+						 	?>
+						
+						<?php else: ?>
+							<?php if(!isset($_GET['e'])):?>
+								<div class="header">PRODUCT/<a href="<?php echo ADMIN_PRODUCT_SELLING; ?>" class="plain-lk">SELLING</A></div>
+								<div id="product-grid" class="body">
+									<?php echo $products_list; ?>
+								</div>
+							<?php else: ?>
+									<?php 
+										$product_preview = $product->loadEditProductInfoByUrl($_GET['e']); 
+										echo $product_preview;
+									 ?>
+							<?php endif; ?>
+						<?php endif; ?>
+						
+					<?php else: ?>	
+					<?php  endif;?>
+				<?php endif; ?>
+			</div>
+		</div>	
+	<div id="dialog-popup-overlay" class="overlay ol hdn"></div>	
+	<div id="popup-dialog-wrapper" class="vertical-center dl hdn" style="position:fixed;width:100%;margin-top:-40px;z-index:10001;text-align:center;">
+	</div>
+	</body>
+	
+</html>

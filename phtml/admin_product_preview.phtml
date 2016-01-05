@@ -1,0 +1,55 @@
+<div class="header">PRODUCT/<a href="<?php echo ADMIN_PRODUCT_SELLING; ?>" class="plain-lk">SELLING</a>/<?php echo strtoupper($product['title']); ?></div>
+<div class="body" style="padding:0px 30px;">
+	<div id="glob-product-prew" data-product-id="<?php echo htmlentities($product['product_id']) ?>">
+		<div id="product-shot-preview" class="inline-blk" style="width:360px" >
+			<div class="product-preview" style="border: 1px solid #eaeaea;">
+				<img src="<?php echo htmlentities(displayMedia($product['cover_path_url'])) ?>" id="product-preview-shot" style="width:100%;">
+			</div>
+		</div>
+		<div id="product-detail-info" class="inline-blk" data-key="<?php echo $product['product_id']; ?>">
+			<div id="detail-info-inner" style="margin:0px 20px 0px 20px">
+				<div class="title"><div style="font-size:16px;">Title</div> <input class="fcy-txt" type="text" value="<?php echo htmlentities($product['title']) ?>" /></div>
+				<div class="desc"><div style="font-size:16px;">Description</div> <textarea class="fcy-txt"  style="height:120px;"><?php echo $product['description'] ?></textarea></div>
+				<div class="price"><div style="font-size:16px;">Price</div> <input class="fcy-txt" type="text"  value="<?php echo $product['price'] ?>" /></div>
+				<div id="product-general-info-update" class="animated-button blue-action-button right-flow" style="margin:20px 10px 0px 0px">UPDATE</div>
+			</div>
+		</div>
+	</div>
+	<div  class="inline-blk" style="margin-top:40px;">
+			<div class="list inline-blk" style="text-align:left;border:1px solid #ADADAD">
+				<div class="header" style="padding:0px;font-size:0px;">
+					<div  class="form-title grid-column" >Use as cover</div>
+					<div  class="form-title grid-column" >Picture</div>
+					<div  class="form-title grid-column" >Attribute Name</div>
+					<div  class="form-title grid-column" >Size</div>
+					<div  class="form-title grid-column" >Quantity</div>
+					<div  class="form-title grid-column" >Delete</div>
+				</div>
+				<div class="body">
+					<?php if($product['attribute_rows']  !== false): ?>
+						<?php foreach($product['attribute_rows'] as $attribute_row): ?>
+							<div class="attribute-row" data-attribute-row-id="<?php echo $attribute_row['product_attribute_id'] ?>" style="border-top:1px solid #ADADAD;">
+								<div  class="grid-column grid-content" >
+									<?php if($attribute_row['cover'] == '1'): ?>
+										<input class="use-as-cover unselectable" type="checkbox" checked = "checked"  data-attribute-name-id="<?php echo $attribute_row['attribute_name_id'] ?>"/>
+									<?php else: ?>
+										<input class="use-as-cover selectable" type="checkbox" data-attribute-name-id="<?php echo $attribute_row['attribute_name_id'] ?>" />
+									<?php endif; ?>
+								</div>
+								<div  class="grid-column grid-content" ><img src="<?php echo htmlentities(MEDDIR.$attribute_row['shot_path']) ?>" class="attribute-thumb" height="48" width="48" ></div>
+								<div  class="grid-column grid-content" ><?php echo htmlentities( $atr_name->getAttributeNameFromId($attribute_row['attribute_name_id'])) ?></div>
+								<div  class="grid-column grid-content" ><?php echo $product_size->getSizeFromId($attribute_row['product_size_id']); ?></div>
+								<div  class="grid-column grid-content inventory"  ><div class="inventory-value" ><?php echo $attribute_row['inventory']; ?></div><input type="text" class="hdn fcy-txt" value="<?php echo $attribute_row['inventory']; ?>" style="width:60%" ></div>
+								<div  class="grid-column grid-content" ><img class="action-icon remove-attribute" src="<?php echo MEDDIR?>trashcan_icon.png" height="16" width="16"></div>
+							</div>
+						<?php endforeach; ?>
+					<?php else: ?>
+						<div style="text-align:center;border-top:1px solid #ADADAD;font-size:16px;padding:20px 0px;opacity:0.8;">NO ENTRY YET</div>
+					<?php endif; ?>
+				</div>
+			</div>
+			<div class="footer" style="margin-top:10px;" >
+				<div id="add-attribute" class="animated-button blue-action-button right-flow" style="margin-left:10px;">ADD COLOR</div>
+			</div>
+	</div>
+</div>

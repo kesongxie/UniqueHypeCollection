@@ -1,0 +1,10 @@
+<div class="popup-cart-item-wrapper">
+	<div class="left-flow" style="margin-right:6px;">
+		<img src="<?php echo $cart_item['url']; ?>" height="40" width="40" style="border-radius:2px;">
+	</div>
+	<div>
+		<a href="<?php echo $cart_item['product_url']; ?>" class="a-red plain-lk"><div style="font-size:15px;color:inherit"><?php echo $cart_item['title']; ?></div></a>
+		<div style="font-size:13px;"><?php echo $cart_item['quantity']; ?> / <?php echo $cart_item['attribute_name']; ?> / <?php echo $cart_item['size']; ?> <div class="right-flow"> <?php echo getCurrencyFormat($cart_item['price']); ?></div></div>
+	</div>
+</div>
+	

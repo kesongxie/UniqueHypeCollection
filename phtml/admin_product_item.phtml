@@ -1,0 +1,10 @@
+<div class="items inline-blk">
+	<a href="<?php echo SHOP_DIR.$product['url'] ?>" target="_blank"><div class="item-wrapper">
+		<img src="<?php echo htmlentities($product['cover_path_url']) ?>" style="width:100%;">
+	</div></a>
+	<div class="item-info">
+		<a href="<?php echo EDIT_SELLIING_PATH.$product['url']; ?>"><div class="animated-button blue-action-button right-flow" style="margin-left:10px;">EDIT</div></a>
+		<div class="txt_ofl" ><?php echo htmlentities($product['title']) ?></div>
+		<div class="price"><?php echo getCurrencyFormat($product['price']) ?></div>
+	</div>
+</div>

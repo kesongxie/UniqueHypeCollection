@@ -1,0 +1,21 @@
+<div class="item-row" data-atr-key="<?php echo $cart_item['product_attribute_id'] ?>">
+	<div class="grid-column" style="width:40%;text-align:left">
+		<div class="inline-blk" style="margin-right:6px;">
+			<img src="<?php echo $cart_item['url']; ?>" height="80" width="80" style="border-radius:2px;">
+		</div>
+		<div class="inline-blk">
+			<a href="<?php echo $cart_item['product_url']; ?>" class="a-red plain-lk"><div style="font-size:15px;color:inherit" ><?php echo $cart_item['title']; ?></div></a>
+			<div>
+				<div class="inline-blk"style="font-size:13px;margin-right:10px;"><?php echo $cart_item['attribute_name']; ?>  / <?php echo $cart_item['size']; ?> </div>
+				<div class="remove-from-cart inline-blk plain-lk" style="font-size:13px;opacity:0.6;">REMOVE</div>
+			</div>
+		</div>
+	</div>
+	<div class="grid-column" style="width:20%;text-align:center">
+		<?php echo $cart_item['quantity']; ?>
+	</div>
+	<div class="grid-column" style="width:20%;text-align:center"><?php echo ($cart_item['quantity'] > $cart_item['inventory'])?'Quantity Unavailable':'In Stock' ?></div>
+	<div class="grid-column"  style="width:20%;text-align:right;font-size:13px;"> <?php echo getCurrencyFormat($cart_item['price']); ?></div>
+	<input type="hidden" name="key" value="<?php echo $cart_item['product_attribute_id'] ; ?>">
+	<input type="hidden" name="quantity" value="<?php echo $cart_item['quantity']; ?>">
+</div>
