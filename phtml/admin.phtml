@@ -31,11 +31,8 @@
 		<div style="font-size:0px;width:100%;clear:both" >
 		
 			<ul id="left-side-bar" class="inline-blk">
-				<li class="navi-item">
-					<a href="" class="item plain-lk">Overview</a>
-				</li>
 				
-				<li class="navi-item<?php echo ($_GET['t'] == 'p')?' act':'' ?>">
+				<li class="navi-item<?php echo (isset($_GET['t']) && $_GET['t'] == 'p'  || !isset($_GET['t']) )?' act':'' ?>">
 					<a href="<?php echo  ADMIN_PRODUCT_SELLING?>" class="item plain-lk">Product</a>
 					<ul>
 						<li class="sub-item"><a href="<?php echo ADMIN_PRODUCT_SELLING ?>" class="plain-lk<?php echo (isset($_GET['st']) && strtolower($_GET['st']) == 'selling')?' act':'' ?>">Selling</a></li>
@@ -43,33 +40,18 @@
 					</ul>
 				</li>
 				
-				<li class="navi-item<?php echo ($_GET['t'] == 'o')?' act':'' ?>">
+				<li class="navi-item<?php echo (isset($_GET['t']) && $_GET['t'] == 'o')?' act':'' ?>">
 					<a href="<?php echo ADMIN_PRODUCT_ORDER ?>" class="item plain-lk">Order</a>
 				</li>
 				
-				<li class="navi-item">
-					<a href="" class="item plain-lk">Store</a>
-				</li>
 				
-				<li class="navi-item">
-					<a href="" class="item plain-lk">Logout</a>
+				<li class="navi-item" >
+					<a href="<?php echo ADMIN_LOGOUT ?>" class="item plain-lk">Logout</a>
 				</li>
 			</ul>
 			<div id="right-side-bar" class="inline-blk" >
-				<?php if($_GET['t'] == 'p'): ?>
-						<!-- Selling Tab -->
-						<?php if(!isset($_GET['e'])):?>
-							<div class="header">PRODUCT/<a href="<?php echo ADMIN_PRODUCT_SELLING; ?>" class="plain-lk">SELLING</A></div>
-							<div id="product-grid" class="body">
-								<?php echo $products_list; ?>
-							</div>
-						<?php else: ?>
-								<?php 
-									$product_preview = $product->loadEditProductInfoByUrl($_GET['e']); 
-									echo $product_preview;
-								 ?>
-						<?php endif; ?>
-				<?php elseif($_GET['t'] == 'o'): ?>
+				
+				<?php if($_GET['t'] == 'o'): ?>
 					<!-- Order Tab -->
 				<div class="header">ORDER/<a href="<?php echo ADMIN_PRODUCT_ORDER; ?>" class="plain-lk">RECORD</A></div>
 				<?php $order_record = new Order_Record(); ?>
@@ -89,35 +71,21 @@
 						<?php echo $order_record->loadOrderRecord(); ?>
 					
 					</div>
-			</div>
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
+				</div>
+				
+				<?php else : ?>
+						<!-- Selling Tab -->
+						<?php if(!isset($_GET['e'])):?>
+							<div class="header">PRODUCT/<a href="<?php echo ADMIN_PRODUCT_SELLING; ?>" class="plain-lk">SELLING</A></div>
+							<div id="product-grid" class="body">
+								<?php echo $products_list; ?>
+							</div>
+						<?php else: ?>
+								<?php 
+									$product_preview = $product->loadEditProductInfoByUrl($_GET['e']); 
+									echo $product_preview;
+								 ?>
+						<?php endif; ?>
 				
 				<?php endif; ?>
 			</div>

@@ -63,12 +63,36 @@ ExpiresDefault "access 2 days"
 	RewriteRule ^shop/bag/view$ bag.php [NC,L]
 </IfModule>
 
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+	RewriteRule ^shop/order/confirm/([a-zA-Z0-9-]+)$ order_confirm.php?id=$1 [NC,L]
+</IfModule>
+
+
 
 
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	RewriteBase /
 	RewriteRule ^admin$ admin.php [NC,L]
+</IfModule>
+
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+	RewriteRule ^admin/login$ admin_login.php [NC,L]
+</IfModule>
+
+
+
+
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+	RewriteRule ^admin/logout$ admin/logout.php [NC,L]
 </IfModule>
 
 

@@ -123,6 +123,9 @@ function isAttributeNameAndSizeAlreadyExisted(){
 		var product_id = $('#glob-product-prew').attr('data-product-id');
 		var name = parentDiv.find('#attribute-name').val().toUpperCase();
 		var size = parentDiv.find('#available-size').val();
+		if(name.trim().length == 0){
+			return false;
+		}
 		$.ajax({
 			url:AJAXDIR+'isAttributeNameAndSizeAlreadyExisted.php',
 			method:'post',

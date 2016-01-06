@@ -1,0 +1,16 @@
+<div class="item-row">
+	<div class="grid-column" style="width:60%;text-align:left">
+		<div class="inline-blk" style="margin-right:6px;">
+			<img src="<?php echo $record['shot_path']; ?>" height="80" width="80" style="border-radius:2px;">
+		</div>
+		<div class="inline-blk">
+			<a href="<?php echo $record['url']; ?>" class="a-red plain-lk"><div style="font-size:15px;color:inherit"><?php echo $record['title']; ?></div></a>
+			<div>
+				<div class="inline-blk" style="font-size:13px;margin-right:10px;"><?php echo $record['attribute_name']; ?>  / <?php echo $record['size']; ?> </div>
+			</div>
+		</div>
+	</div>
+	<div class="grid-column" style="width:20%;text-align:center">
+		<?php echo $record['quantity']; ?>	</div>
+	<div class="grid-column" style="width:20%;text-align:right;font-size:13px;"><?php echo $record['total']; ?></div>
+</div>

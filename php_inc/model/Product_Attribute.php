@@ -148,6 +148,14 @@
 			return $this->getColumnById('attribute_name_id',$product_attrubute_id);
 		}
 		
+		public function getProductSizeIdByProductAttributeId($product_attrubute_id){
+			return $this->getColumnById('product_size_id',$product_attrubute_id);
+		}
+		
+		public function getInventoryByProductAttributeId($product_attrubute_id){
+			return $this->getColumnById('inventory',$product_attrubute_id);
+		}
+		
 		public function getShotPathByProductAttributeId($product_attrubute_id){
 			return $this->getColumnById('shot_path',$product_attrubute_id);
 		}
@@ -553,13 +561,47 @@
 			return false;
 		}
 		
+		public function getProductTitleByProductAttributeId($product_attribute_id){
+			$product_id = $this->getProductIdByProductAttributeId($product_attribute_id);
+			if($product_id != false){
+				$pro = new Product();
+				return $pro->getProductTitleByProductId($product_id);
+			}
+		}
+		
+		public function getProductPriceByProductAttributeId($product_attribute_id){
+			$product_id = $this->getProductIdByProductAttributeId($product_attribute_id);
+			if($product_id != false){
+				$pro = new Product();
+				return $pro->getProductPriceByProductId($product_id);
+			}
+		}
+		
+		public function getProductUrlByProductAttributeId($product_attribute_id){
+			$product_id = $this->getProductIdByProductAttributeId($product_attribute_id);
+			if($product_id != false){
+				$pro = new Product();
+				return SHOP_DIR.$pro->getProductRedirectUrlByProductId($product_id);
+			}
+		}
+
+		public function getProductAttributeNameByProductAttributeId($product_attribute_id){
+			$attribute_name_id = $this->getAttributeNameIdByProductAttributeId($product_attribute_id);
+			if($attribute_name_id !== false){
+				$at_n = new Attribute_Name();
+				return $at_n->getAttributeNameFromId($attribute_name_id);
+			}
+			return false;
+		}
 		
 		
-		
-		
-		
-		
+		public function getProductSizeByProductAttributeId($product_attribute_id){
+			$attribute_size_id = $this->getProductSizeIdByProductAttributeId($product_attribute_id);	
+			if($attribute_size_id !== false){
+				$size = new Product_Size();
+				return $size->getSizeFromId($attribute_size_id);
+			}
+			return false;
+		}
 	}
-
-
 ?>

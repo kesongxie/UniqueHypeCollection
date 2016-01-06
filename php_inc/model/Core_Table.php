@@ -17,13 +17,13 @@
 		}
 		
 		
-		public function getAllRows($asc = false){
-				$primary_key = $this->table_name.'_id';
-				if($asc){
-					$stmt = $this->connection->prepare("SELECT * FROM `$this->table_name` ");
-				}else{
-					$stmt = $this->connection->prepare("SELECT * FROM `$this->table_name` ORDER BY `$primary_key` DESC");
-				}if($stmt){
+		public function getAllRows($order_column, $asc = false){
+			if($asc){
+				$stmt = $this->connection->prepare("SELECT * FROM `$this->table_name`  ORDER BY `$order_column` ");
+			}else{
+				$stmt = $this->connection->prepare("SELECT * FROM `$this->table_name` ORDER BY `$order_column` DESC");
+			}
+			if($stmt){
 				if($stmt->execute()){
 					 $result = $stmt->get_result();
 					 if($result !== false && $result->num_rows >= 1){

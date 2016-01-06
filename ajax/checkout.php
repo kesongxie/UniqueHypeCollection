@@ -30,9 +30,9 @@
 			->setDescription($product_info['attribute_name']." / ".$product_info['size'])
 			->setUrl($product_info['url'])
 			->setPrice($product_info['price']);
-			
 			$sub_total += $product_info['price'] * $product['quantity'];
 			array_push($item_array, $item);
+				
 		}
 	}
 	
@@ -62,7 +62,7 @@
 				->setInvoiceNumber(uniqid());
 				
 	$redirectUrls = new RedirectUrls();			
-	$redirectUrls->setReturnUrl(AFTER_PAYMENT_REDIRECT.'?atr_key='.$product['atr_key'].'&&success=true')
+	$redirectUrls->setReturnUrl(AFTER_PAYMENT_REDIRECT.'?success=true')
 				 ->setCancelUrl(AFTER_PAYMENT_REDIRECT.'?success=false');
 				
 	$payment = new Payment();
@@ -87,12 +87,18 @@
 	$approvalUrl = $payment->getApprovalLink();
 	deleteCookie('cart_items');
 	
-	
+	$payment_item_row = new Payment_Item_Row();
 	$payment_id = $payment->getId();
-	//$_SESSION['payment_id'] = $payment_id;
+	$_SESSION['payment_id'] = $payment_id;
 	
-	
-	
-	
+	foreach($_POST['data'] as $product){
+		$total = $product['quantity'] * $atr->getProductPriceByProductAttributeId($product['atr_key']);
+		$product_info = $payment_item_row->insertPaymentItemRow($payment_id, $product['atr_key'], $product['quantity'], $total);
+		$inventory = $atr->getInventoryByProductAttributeId($product['atr_key']) - $product['quantity'];
+		if($inventory < 0){
+			$inventory = 0;
+		}
+		$atr->updateInventory($product['atr_key'], $inventory);
+	}
 	echo $approvalUrl;
 ?>

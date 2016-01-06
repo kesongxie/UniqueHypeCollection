@@ -39,13 +39,21 @@
 			$product_collection = $this->getAllRowsMultipleColumns(array('product_id','title', 'price', 'url'));
 			$products = '';
 			$atr = new Product_Attribute();
-			foreach($product_collection as $product){
-				$product['cover_path_url'] = $atr->getProductCoverPathByProductId($product['product_id']);
+			if($product_collection !== false){
+				foreach($product_collection as $product){
+					$product['cover_path_url'] = $atr->getProductCoverPathByProductId($product['product_id']);
+					ob_start();
+					include(TEMPLATE_PATH.'admin_product_item.phtml');
+					$products.= ob_get_clean();
+				}
+				return $products;
+			}else{
 				ob_start();
-				include(TEMPLATE_PATH.'admin_product_item.phtml');
-				$products.= ob_get_clean();
+				include(TEMPLATE_PATH.'no_product_empty_state.phtml');
+				$content= ob_get_clean();	
+				return $content;
 			}
-			return $products;
+			
 		}
 		
 		
