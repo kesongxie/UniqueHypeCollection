@@ -1,5 +1,6 @@
 body{
-	min-width:1024px;
+	/* min-width:1024px; */
+	min-width: 1280px;
 }
 
 a, li{
@@ -23,9 +24,9 @@ textarea{
 	}
 
 }
-
-
-
+.grid-column{
+	padding:6px;
+}
 
 
 .grid-column:nth-child(even){
@@ -40,7 +41,7 @@ textarea{
 
 
 #left-side-bar{
-	width:15%;
+	width:180px;
 	background-color:#F3F3F3;
 	border-right:1px solid #D4D4D4;
 	height:100vh;
@@ -79,7 +80,8 @@ textarea{
 }
 
 #right-side-bar{
-	width:84%;	
+	width:84%;
+	min-width:1072px;	
 }
 
 #right-side-bar .header{
@@ -93,7 +95,8 @@ textarea{
 }
 
 .grid-content{
-	height:60px;
+	height:100px;
+	overflow:scroll;
 }
 
 
@@ -166,11 +169,27 @@ textarea{
 
 
 .grid-column{
-	font-size:14px !important;
+	font-size:12px !important;
 }
 
 
 .form-title{
 	font-size:16px;
 	color:#7D1D1D;
+}
+
+.attribute-row:nth-child(even){
+	background:#f8f8f8;
+}
+
+.attribute-row .status-label{
+	font-weight:600;
+}
+.need-action{
+	color:#7D1D1D;
+}
+
+.no-need-action{
+	color:inherit;
+	font-weight:500;
 }

@@ -86,6 +86,11 @@ ExpiresDefault "access 2 days"
 	RewriteRule ^admin/product/selling$ admin.php?t=p&st=selling [NC,L]
 </IfModule>
 
+
+
+
+
+
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	RewriteBase /
@@ -97,9 +102,8 @@ ExpiresDefault "access 2 days"
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	RewriteBase /
-	RewriteRule ^admin/product/addnew$ admin.php?t=p&st=addnew [NC,L]
+	RewriteRule ^admin/order$ admin.php?t=o [NC,L]
 </IfModule>
-
 
 
 

@@ -251,8 +251,22 @@
 	  var_dump($mixed);
 	  echo '</pre>';
 	  return null;
-}
+	}
 	
+	function outPutOrderStatus($status){
+		switch($status){
+			case 'not ship yet':
+			case 'waiting for refund':
+				return '<span class="need-action">'.$status.'</span>';break;
+			case 'shipped':
+			case 'refunded';	
+				return '<span class="no-need-action">'.$status.'</span>';break;
+			default:
+				return '<span>unknown status</span>';break;
+			
+		}
+	}
+
 		
 	
 ?>

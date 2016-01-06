@@ -35,7 +35,7 @@
 					<a href="" class="item plain-lk">Overview</a>
 				</li>
 				
-				<li class="navi-item act">
+				<li class="navi-item<?php echo ($_GET['t'] == 'p')?' act':'' ?>">
 					<a href="<?php echo  ADMIN_PRODUCT_SELLING?>" class="item plain-lk">Product</a>
 					<ul>
 						<li class="sub-item"><a href="<?php echo ADMIN_PRODUCT_SELLING ?>" class="plain-lk<?php echo (isset($_GET['st']) && strtolower($_GET['st']) == 'selling')?' act':'' ?>">Selling</a></li>
@@ -43,8 +43,8 @@
 					</ul>
 				</li>
 				
-				<li class="navi-item">
-					<a href="" class="item plain-lk">Order</a>
+				<li class="navi-item<?php echo ($_GET['t'] == 'o')?' act':'' ?>">
+					<a href="<?php echo ADMIN_PRODUCT_ORDER ?>" class="item plain-lk">Order</a>
 				</li>
 				
 				<li class="navi-item">
@@ -57,31 +57,68 @@
 			</ul>
 			<div id="right-side-bar" class="inline-blk" >
 				<?php if($_GET['t'] == 'p'): ?>
-					<?php if(isset($_GET['st'])): ?>
-						<?php  if($_GET['st'] == 'addnew'): ?>
-								
-
-							<?php 
-								$product_preview = $product->addNewProduct("rigid-slim-jean"); 
-								echo $product_preview;
-						 	?>
-						
+						<!-- Selling Tab -->
+						<?php if(!isset($_GET['e'])):?>
+							<div class="header">PRODUCT/<a href="<?php echo ADMIN_PRODUCT_SELLING; ?>" class="plain-lk">SELLING</A></div>
+							<div id="product-grid" class="body">
+								<?php echo $products_list; ?>
+							</div>
 						<?php else: ?>
-							<?php if(!isset($_GET['e'])):?>
-								<div class="header">PRODUCT/<a href="<?php echo ADMIN_PRODUCT_SELLING; ?>" class="plain-lk">SELLING</A></div>
-								<div id="product-grid" class="body">
-									<?php echo $products_list; ?>
-								</div>
-							<?php else: ?>
-									<?php 
-										$product_preview = $product->loadEditProductInfoByUrl($_GET['e']); 
-										echo $product_preview;
-									 ?>
-							<?php endif; ?>
+								<?php 
+									$product_preview = $product->loadEditProductInfoByUrl($_GET['e']); 
+									echo $product_preview;
+								 ?>
 						<?php endif; ?>
-						
-					<?php else: ?>	
-					<?php  endif;?>
+				<?php elseif($_GET['t'] == 'o'): ?>
+					<!-- Order Tab -->
+				<div class="header">ORDER/<a href="<?php echo ADMIN_PRODUCT_ORDER; ?>" class="plain-lk">RECORD</A></div>
+				<?php $order_record = new Order_Record(); ?>
+				<div class="list inline-blk" style="text-align:left;border:1px solid #ADADAD;margin:20px;min-width:1033px;">
+					<div class="header" style="padding:0px;font-size:0px;">
+						<div class="form-title grid-column" style="width:80px;">Customer</div>
+						<div class="form-title grid-column" style="width:100px;">Email</div>
+						<div class="form-title grid-column" style="width:80px">Phone</div>
+						<div class="form-title grid-column" style="width:240px">Item Description</div>
+						<div class="form-title grid-column">Shipping Address</div>
+						<div class="form-title grid-column"  style="width:60px;">Total</div>
+						<div class="form-title grid-column" style="width:100px">Time</div>
+
+						<div class="form-title grid-column" style="width:140px">Status</div>
+					</div>
+					<div class="body">
+						<?php echo $order_record->loadOrderRecord(); ?>
+					
+					</div>
+			</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+				
 				<?php endif; ?>
 			</div>
 		</div>	

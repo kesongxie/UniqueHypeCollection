@@ -12,6 +12,8 @@
 	
 	define("ADMIN_PRODUCT_ADDNEW", ROOTDIR.'admin/product/addnew');
 	define("ADMIN_PRODUCT_SELLING", ROOTDIR.'admin/product/selling');
+	define("ADMIN_PRODUCT_ORDER", ROOTDIR.'admin/order');
+	
 	define("EDIT_SELLIING_PATH",ADMIN_PRODUCT_SELLING.'/edit/');
 	define("MAXIMUM_UPLOAD_IMAGE_SIZE", 6242880);
 	

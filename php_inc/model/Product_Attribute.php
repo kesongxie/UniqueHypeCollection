@@ -489,7 +489,6 @@
 		}
 		
 		public function loadCheckoutBagView(){
-			
 			if(isset($_COOKIE['cart_items'])){
 				$items = $this->getCartItem();
 				if(sizeof($items) > 0){
@@ -515,8 +514,6 @@
 				$content = ob_get_clean();
 				return $content;
 			}
-		
-			
 		}
 		
 		
@@ -530,7 +527,7 @@
 				$product['title'] = $pro->getProductTitleByProductId($product['product_id']);
 				$product['attribute_name'] = $at_n->getAttributeNameFromId($product['attribute_name_id']);
 				$product['size'] = $size->getSizeFromId($product['product_size_id']);
-				$product['url'] = MEDDIR.$product['shot_path'];
+				$product['url'] = SHOP_DIR.$pro->getProductRedirectUrlByProductId($product['product_id']);
 				return $product;
 			}else{
 				return false;

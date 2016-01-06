@@ -1,0 +1,24 @@
+<div class="attribute-row" data-order-record-id="<?php echo $record['order_record_id'] ?>" style="border-top:1px solid #ADADAD;">
+	<div class="grid-column grid-content" style="width:80px;"><?php echo htmlentities($record['firstname']).' '.htmlentities($record['lastname']) ?></div>
+	<div class="grid-column grid-content" style="width:100px;"><?php echo htmlentities($record['email']) ?></div>
+	<div class="grid-column grid-content" style="width:80px;"><?php echo htmlentities($record['phone']) ?></div>
+	<div class="grid-column grid-content" style="width:240px;font-size:11px !important"><ul><?php echo $record['item_description']  ?></ul></div>
+	<div class="grid-column grid-content"><?php echo htmlentities($record['shipping_address']) ?></div>
+	<div class="grid-column grid-content" style="width:60px;"><?php echo getCurrencyFormat(htmlentities($record['total'])) ?></div>
+	<div class="grid-column grid-content" style="width:100px;"><?php echo htmlentities($record['order_time']) ?></div>
+	<div class="grid-column grid-content order-status" style="width:140px;cursor:pointer">
+		<div class="status-label"><?php echo outPutOrderStatus(htmlentities($record['status'])); ?></div>
+		<div class="update-order-status vertical-center hdn">
+			<select style="font-size:13px;">
+				<option>not ship yet</option>
+				<option>shipped</option>
+				<option>waiting for refund</option>
+				<option>refunded</option>
+			</select>
+			<div>
+			<button class="fashion-gray-button cancel-status-button" style="padding:6px;margin:10px 4px 0px 0px;">Cancel</button>
+			<button class="animated-button blue-action-button update-status-button" style="padding:2px;margin-top:10px;line-height:22px">Update</button>
+			</div>
+		</div>
+	</div>
+</div>

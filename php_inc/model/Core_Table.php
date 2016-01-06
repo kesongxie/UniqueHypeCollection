@@ -17,6 +17,27 @@
 		}
 		
 		
+		public function getAllRows($asc = false){
+				$primary_key = $this->table_name.'_id';
+				if($asc){
+					$stmt = $this->connection->prepare("SELECT * FROM `$this->table_name` ");
+				}else{
+					$stmt = $this->connection->prepare("SELECT * FROM `$this->table_name` ORDER BY `$primary_key` DESC");
+				}if($stmt){
+				if($stmt->execute()){
+					 $result = $stmt->get_result();
+					 if($result !== false && $result->num_rows >= 1){
+						$rows = $result->fetch_all(MYSQLI_ASSOC);
+						$stmt->close();
+						return $rows;
+					 }
+				}
+			}
+			echo $this->connection->error;
+			return false;
+		}
+		
+		
 		public function getAllColumnsById($id){
 			$primary_key = $this->table_name.'_id';
 			$stmt = $this->connection->prepare("SELECT * FROM `$this->table_name` WHERE `$primary_key` = ? LIMIT 1");

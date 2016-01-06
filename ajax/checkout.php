@@ -28,7 +28,9 @@
 			->setCurrency('USD')
 			->setQuantity($product['quantity'])
 			->setDescription($product_info['attribute_name']." / ".$product_info['size'])
+			->setUrl($product_info['url'])
 			->setPrice($product_info['price']);
+			
 			$sub_total += $product_info['price'] * $product['quantity'];
 			array_push($item_array, $item);
 		}
@@ -80,7 +82,17 @@
 	}
 	
 	
+	
+	
 	$approvalUrl = $payment->getApprovalLink();
 	deleteCookie('cart_items');
+	
+	
+	$payment_id = $payment->getId();
+	//$_SESSION['payment_id'] = $payment_id;
+	
+	
+	
+	
 	echo $approvalUrl;
 ?>

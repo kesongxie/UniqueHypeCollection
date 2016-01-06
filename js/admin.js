@@ -308,7 +308,43 @@ $(document).ready(function(){
 	},'#attribute-pic-label');
 
 	
+	$('body').on({
+		click:function(){
+			$(this).find('.status-label').addClass('hdn');
+			$(this).find('.update-order-status').removeClass('hdn');
+		}
+		
+	},'.order-status');
 	
+	$('body').on({
+		click:function(){
+			$(this).parents('.order-status').find('.status-label').removeClass('hdn');
+			$(this).parents('.order-status').find('.update-order-status').addClass('hdn');
+			return false;
+		}
+	
+	},'.cancel-status-button');
+	
+	
+	$('body').on({
+		click:function(){
+			var row  = $(this).parents('.attribute-row');
+			var order_record_id = row.attr('data-order-record-id');
+			var order_status = row.find('.update-order-status select').val();
+			
+			$.ajax({
+				url:AJAXDIR+'updateOrderStatus.php',
+				method:'post',
+				data:{order_record_id:order_record_id, order_status:order_status},
+				success:function(resp){
+					document.location.reload();
+				}
+			});
+			return false;
+		}
+	
+	},'.update-status-button');
+
 
 	
 	
