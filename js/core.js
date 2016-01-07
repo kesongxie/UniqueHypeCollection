@@ -119,6 +119,7 @@ $(document).ready(function(){
 	},'#add-to-cart');
 	
 	$('#checkout').click(function(){
+		$(this).unbind('click');
 		var data = [];
 		$('#glob-checkout-wrapper .body .item-row').each(function(index){
 			var item = {};

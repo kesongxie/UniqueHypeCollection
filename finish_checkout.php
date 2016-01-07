@@ -5,15 +5,15 @@
 	
 	
 	if(!isset($_GET['success'], $_GET['paymentId'],$_GET['PayerID'])){
-		die();
+		header('location:'.ROOTDIR);
 	}
 	
 	if((bool)$_GET['success'] === false){
-		die();
+		header('location:'.ROOTDIR);
 	}
 	
 	if($_GET['paymentId'] != $_SESSION['payment_id']){
-		die();
+		header('location:'.ROOTDIR);
 	}
 	
 	$paymentId = $_GET['paymentId'];
